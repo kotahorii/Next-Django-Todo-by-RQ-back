@@ -10,7 +10,7 @@ class User(AbstractUser):
         return self.username
 
 
-class Tags(models.Model):
+class Tag(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=20)
 
@@ -21,9 +21,9 @@ class Tags(models.Model):
 class Task(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=30)
-    content = models.TextField()
+    content = models.TextField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tags = models.ForeignKey(Tags, on_delete=models.CASCADEs)
+    tags = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
