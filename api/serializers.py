@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
-        models = Tag
+        model = Tag
         fields = ('id', 'name')
 
 
